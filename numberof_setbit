@@ -1,0 +1,30 @@
+#include<iostream>
+#include<thread>
+
+using namespace std;
+
+void Count_Numberofbit(int x)
+{
+    int count =0;
+    while(x)
+    {
+            count += x&1;
+            x = x>>1;
+    }
+   cout<<this_thread::get_id()<<" "<<count<<endl;
+}
+int main()
+{
+    thread t1(Count_Numberofbit,23);
+    thread t2(Count_Numberofbit,23);
+    thread t3(Count_Numberofbit,23);
+    thread t4(Count_Numberofbit,23);
+    thread t5(Count_Numberofbit,23);
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
+    t5.join();
+    
+    return 0;
+}
