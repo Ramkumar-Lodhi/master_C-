@@ -1,0 +1,62 @@
+//Facade Design pattern
+class Flight
+{
+public:
+    void Book(){cout<<"Flight ticket booked"<<endl;}
+    void cancel(){cout<<"Flight ticket cancel"<<endl;}
+};
+class Hotel
+{
+public:
+    void Book(){cout<<"Hotel ticket booked"<<endl;}
+    void cancel(){cout<<"Hotel ticket cancel"<<endl;}
+};
+class Cab
+{
+public:
+    void Book(){cout<<"Cab ticket booked"<<endl;}
+    void cancel(){cout<<"Cab ticket cancel"<<endl; }
+};
+class Travelpackage
+{
+private:
+    Flight *f1;
+    Hotel *h1;
+    Cab *c1;
+public:
+    Travelpackage()
+    {
+        f1 = new Flight;
+        h1 = new Hotel;
+        c1 = new Cab;
+    }
+    void Book()
+    {
+        f1->Book();
+        h1->Book();
+        c1->Book();
+
+        cout<<"Congrats your Ticket has been booked"<<endl<<endl;
+    }
+    void cancel()
+    {
+        f1->cancel();
+        h1->cancel();
+        c1->cancel();
+
+        cout<<"Sorry to Hear that, Your ticket has been cancelled "<<endl<<endl;
+    }
+    ~Travelpackage()
+    {
+        delete f1;
+        delete h1;
+        delete c1;
+    }
+};
+int main()
+{
+
+    Travelpackage t1;
+    t1.Book();
+    t1.cancel();
+}
