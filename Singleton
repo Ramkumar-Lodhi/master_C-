@@ -1,0 +1,26 @@
+//Singleton Design pattern
+class Singletion
+{
+    static Singletion *instance;
+    Singletion()=default;   //static Singletion *ptr;
+public:
+    Singletion(const Singletion &rhs)=delete;
+    Singletion & operator=(const Singletion &rhs)=delete;
+    static Singletion *getInstance();
+    void fun(){cout<<"Hello singleton   "<<this<<endl;}
+};
+Singletion* Singletion::instance = nullptr;
+Singletion* Singletion::getInstance()
+{
+    if(!instance)
+            instance = new Singletion();
+    return instance;
+}
+int main()
+{
+
+    //Driver code for singleton
+    Singletion *s1 = Singletion::getInstance();
+    s1->fun();
+    return 0;
+}
